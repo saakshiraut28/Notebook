@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}Root{% endblock %}</title>
+    <!-- Defining a title in base template which can be overwritten by the child template-->
+</head>
+<body >
+    <nav class="flex w-full h-[50px] bg-black text-white text-[18px] items-center px-12 items-between">
+        <div class="flex w-1/2 justify-start"><span><a href="/">Logo</a></span></div>
+        <div class="flex w-1/2 justify-end space-x-4"><span><a href="/login" >Login</a></span>
+        <span><a href="/logout">Logout</a></span>
+        <span><a href="/" >Home</a></span>
+        <span><a href="/signup" >Signup</a></span></div>
+        
+    </nav>
+    <div class="container w-full h- full flex justify-center bg-indigo-400">
+        {% block contains %}{% endblock %}
+    </div>
+</body>
+</html>
