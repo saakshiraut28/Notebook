@@ -12,20 +12,21 @@ def logout():
 
 @auth.route('/signup',methods=['GET','POST'])
 def sign_up():
-    if request == 'POST':
+    if request.method == 'POST':
         name = request.form.get('username')
         email = request.form.get('email')
         pass1 = request.form.get('password1')
         pass2 = request.form.get('password2')
-        if len(name)<1:
-            flash('Name should contain more than 1 character', category='error')
-        elif len(email)<3:
-            flash('Email should contain more than 3 character', category='error')
-        elif len(pass1)<7:
-            flash('Name should contain more than 7 character', category='error')
+        
+        if len(name) < 2:
+            flash("Length of username should be minimum 2 characters.",category='error')
+        elif len(email) < 3:
+            flash("Length of email should be minimum 3 characters.",category='error')
         elif pass1 != pass2:
-            flash('Password doesn\'t match :(', category='error')
+            flash("Password doesn't match.",category='error')
+        elif len(pass1) <7:
+            flash("Password should consist of min 7 characters.",category='error') 
         else:
-            flash('You created a new account', category='success')
+            flash("Sign Up Successfully",category='success')
             pass
     return render_template('signup.html')
