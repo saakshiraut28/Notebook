@@ -11,10 +11,14 @@
 <body >
     <nav class="flex w-full h-[50px]  text-[18px] items-center px-12 items-between">
         <div class="flex w-1/2 justify-start"><span><a href="/">Logo</a></span></div>
-        <div class="flex w-1/2 justify-end space-x-4"><span><a href="/login" >Login</a></span>
-        <span><a href="/logout">Logout</a></span>
-        <span><a href="/" >Home</a></span>
-        <span><a href="/signup" >Signup</a></span></div>
+        <div class="flex w-1/2 justify-end space-x-4"></div>
+        {% if user.is_authenticated %}
+        <span class="px-4"><a href="/logout">Logout</a></span>
+        <span class="px-4"><a href="/dashboard">Dashboard</a></span>
+        {% else %}
+        <span class="px-4"><a href="/login" >Login</a></span>
+        <span class="px-4"><a href="/signup" >Signup</a></span></div>
+        {% endif %}
     </nav>
     {% with messages = get_flashed_messages(with_categories=true)%}
     {% if messages %}
