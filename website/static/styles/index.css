@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+body{
+    background-image: url('../images/Bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+}
+.container{
+    font-family: 'Prompt', sans-serif;
+}

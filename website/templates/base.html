@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="../static/styles/index.css" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;600;700&display=swap" rel="stylesheet">
     <title>{% block title %}Root{% endblock %}</title>
     <!-- Defining a title in base template which can be overwritten by the child template-->
 </head>
-<body >
-    <nav class="flex w-full h-[50px]  text-[18px] items-center px-12 items-between">
+<body class="h-screen w-full overflow-hidden" >
+    <nav class="absolute top-0 sticky flex w-full h-[50px]  text-[18px] items-center px-12 items-between text-white border-b-2 border-slate-200 bg-slate-100 bg-opacity-20 shadow-md shadow-slate-300 backdrop-blur-lg">
         <div class="flex w-1/2 justify-start"><span><a href="/">Logo</a></span></div>
         <div class="flex w-1/2 justify-end space-x-4"></div>
         {% if user.is_authenticated %}
@@ -24,7 +29,7 @@
     {% if messages %}
     {% for category, message in messages %}
     {% if category == 'error' %}
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <div class="container border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
         <strong class="font-bold">Error</strong>
         <span class="block sm:inline">{{ message }}</span>
         <span class="absolute top-0 bottom-0 right-0 px-4 py-3" id="close-button">
@@ -41,7 +46,7 @@
         <strong class="font-bold">Success</strong>
         <span class="block sm:inline">{{ message }}</span>
         <span class="absolute top-0 bottom-0 right-0 px-4 py-3" id="close-button">
-            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+            <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20">
                 <title>Close</title>
                 <path
@@ -53,7 +58,7 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
-    <div class="container w-full h- full flex justify-center bg-indigo-400">
+    <div class="container w-full h-full">
         {% block contains %}{% endblock %}
     </div>
 
