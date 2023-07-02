@@ -1,33 +1,49 @@
-{% extends "base.html" %}
-{% block title %}home{% endblock %}
-{% block contains %}
-<div class="grid w-full content-center">
- <h1> DASHBOARD USER</h1>
- {% for note in user.notes: %}
- {{ note.note }}
-<form method="POST" action="./delete">
-    <input type="hidden" value="{{note.id}}" name="note_id">
-    <input type="submit" value="X">
-</form>
- {% endfor %}
-<form method="POST"
-    class="w-2/3 px-8 pt-6 pb-8 mb-4 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 shadow-xl shadow-white">
-    <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-            Add a note.
+<!-- @format -->
+
+{% extends "base.html" %} {% block title %}home{% endblock %} {% block contains
+%}
+<div class="flex w-screen items-center justify-center py-6 text-white bg-black">
+  <div class="w-1/2">
+    <h1 class="text-white text-bold font-inter text-5xl">DASHBOARD USER</h1>
+    <hr />
+    <br />
+    {% for note in user.notes: %}
+    <div class="flex justify-between">
+       <div>
+      {{ note.note }}</div>
+      <div>
+      <form method="POST" action="./delete">
+        <input type="hidden" value="{{note.id}}" name="note_id" />
+        <input type="submit" value="X" />
+      </form></div>
+      
+    </div>
+    <hr />
+    {% endfor %}
+    <form
+      method="POST"
+      class="w-full px-8 pt-6 pb-8 mb-4 bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10"
+    >
+      <div class="mb-4">
+        <label class="block text-white text-sm font-bold mb-2" for="username">
+          Add a note.
         </label>
-        <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            name="note" type="text" placeholder="Username">
-        
-    </div>
-    <div class="flex items-center justify-between">
+        <textarea 
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+          name="note"
+          type="text"
+          placeholder="Write something."
+        ></textarea>
+      </div>
+      <div class="flex items-center justify-between">
         <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit">
-            Add note
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Add note
         </button>
-    </div>
-</form>
+      </div>
+    </form>
+  </div>
 </div>
 {%endblock%}
